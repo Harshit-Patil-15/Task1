@@ -1,0 +1,34 @@
+<div><mat-card>
+    <ol>
+        <li>
+            <mat-label>Book name</mat-label>
+              <mat-form-field>
+            <input matInput [(ngModel)]="book.name" />
+          </mat-form-field>
+        </li>
+        <li>
+            <mat-label>Author Name</mat-label>
+              <mat-form-field>
+            <input matInput [(ngModel)]="book.author" />
+          </mat-form-field>
+        </li>
+        <li>
+            <mat-label>Date of Launch</mat-label>
+              <mat-form-field>
+            <input matInput [(ngModel)]="book.DOL" />
+          </mat-form-field>
+        </li>
+        <li>
+            <mat-label>Price</mat-label>
+              <mat-form-field>
+            <input matInput [(ngModel)]="book.price" />
+          </mat-form-field>
+        </li>
+        <button mat-raised-button (click)="sendData()">Edit Book</button>
+    </ol>
+     
+    
+    </mat-card>
+    </div>
+      
+    

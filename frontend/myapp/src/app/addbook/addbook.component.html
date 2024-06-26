@@ -1,0 +1,36 @@
+<div><mat-card>
+<ol>
+    <li>
+        <mat-label>Book name</mat-label>
+          <mat-form-field>
+        <input matInput [(ngModel)]="name" required/>
+      </mat-form-field>
+    </li>
+    <li>
+        <mat-label>Author Name</mat-label>
+          <mat-form-field>
+        <input required matInput [(ngModel)]="author" />
+      </mat-form-field>
+    </li>
+    <li>
+      <mat-label>Date of Launch</mat-label>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="DOL" required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </li>
+    <li>
+        <mat-label>Price</mat-label>
+          <mat-form-field>
+        <input type="number" matInput [(ngModel)]="price" required/>
+      </mat-form-field>
+    </li>
+    <button mat-raised-button (click)="addBook()">Add Book</button>
+</ol>
+ 
+
+</mat-card>
+</div>
+  

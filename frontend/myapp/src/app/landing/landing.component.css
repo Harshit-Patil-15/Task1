@@ -1,0 +1,107 @@
+#topnav {
+   z-index: 200;
+    width: 100%;
+ 
+    position: fixed;
+    top: 0;
+    left: 0;
+ 
+    background-color: Black;
+ 
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+ }
+ 
+ .nav-link {
+    display: inline-block;
+    width: 100px;
+    height: 55px;
+ 
+    color: White;
+ 
+    text-align: center;
+    line-height: 55px;
+ 
+    text-decoration: none;
+ }
+ 
+ #logo {
+    width: 120px;
+ 
+    background-color: RoyalBlue;
+ 
+    font-weight: bold;
+ }
+ 
+ #about {
+    position: absolute;
+    top: 0;
+    right: 0;
+ }
+ .rolelink{
+    right:50px;
+ }
+ mat-paginator {
+ display: block;
+ margin-top: 10vh;
+ }
+
+ /* Styles for the book cards */
+mat-card {
+   margin: 20px;
+   padding: 20px;
+   background-color: rgb(173, 236, 236);
+   border-radius: 8px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ }
+ 
+ /* Title styling */
+ mat-card-title {
+   font-size: 1.5em;
+   font-weight: bold;
+ }
+ 
+ /* Content styling */
+ mat-card-content p {
+   margin: 5px 0;
+ }
+ 
+ /* Actions styling */
+ mat-card-actions {
+   display: flex;
+   justify-content: flex-end;
+ }
+ 
+ button {
+   margin: 0 5px;
+ }
+ 
+ /* Responsive styling */
+ @media (max-width: 600px) {
+   mat-card {
+     margin: 10px;
+     padding: 10px;
+   }
+ 
+   mat-card-title {
+     font-size: 1.2em;
+   }
+ 
+   mat-card-content p {
+     font-size: 0.9em;
+   }
+ 
+   mat-card-actions {
+     flex-direction: column;
+     align-items: flex-start;
+   }
+ 
+   button {
+     width: 100%;
+     margin: 5px 0;
+   }
+ }
+ .listComponent{
+   display: block;
+   margin-top: 70px !important;
+ }

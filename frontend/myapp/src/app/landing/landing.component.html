@@ -1,0 +1,33 @@
+
+<div><nav id="topnav">
+    <a id="logo" class="nav-link" href="#">Book store</a>
+    <a class="nav-link" routerLink="/add-book">AddBooks</a>
+    <a class="nav-link" (click)="onGetBooks()">Get Books</a>
+
+    <a class="rolelink nav-link " href="#">admin</a>
+    <a id="about" class="nav-link" href="#">LogOut</a>
+</nav>
+</div>
+
+
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+
+<div class="listComponent"  *ngIf="books && books.length"> 
+    <mat-card *ngFor="let book of books"> 
+   <mat-card-title>{{ book.name }}</mat-card-title>
+      <mat-card-content>
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p><strong>Price:</strong> {{ book.price | currency }}</p>
+        <p><strong>Date of Launch:</strong> {{ book.dateOfLaunch | date }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="editBook(book)">Edit</button>
+        <button mat-button (click)="deleteBook(book)">Delete</button>
+      </mat-card-actions>
+</mat-card> 
+</div>
+  

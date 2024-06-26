@@ -1,0 +1,28 @@
+<form class="example-form" (submit)="onSubmitLogin(loginForm)"  #loginForm="ngForm">
+    <mat-label>Email:</mat-label>
+    <mat-form-field class="example-full-width">
+     <input type="email" name="email" matInput required [(ngModel)]="email" placeholder="Ex. pat@example.com">
+     <mat-error *ngIf="loginForm.controls['email']?.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="loginForm.controls['email']?.hasError('email') && !loginForm.controls['email']?.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    </mat-form-field>
+
+    <mat-label>Password:</mat-label>
+    <mat-form-field class="example-full-width" name="role" >
+    <input type="password" name="password"matInput required [(ngModel)]="password" placeholder="password" >
+    </mat-form-field>
+    <mat-error *ngIf="loginForm.controls['password']?.hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+     
+
+      <div class="example-button-row">
+        <button mat-flat-button  type="submit">Login</button>
+      </div>
+      <a routerLink="/register">Create User</a>
+ 
+  </form>
+  

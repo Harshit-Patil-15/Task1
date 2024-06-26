@@ -1,0 +1,35 @@
+<form class="example-form" (submit)="onSubmitRegister(registerForm)"  #registerForm="ngForm">
+    <mat-label>Name:</mat-label>
+    <mat-form-field class="example-full-width">
+    <input type="text" matInput required name="name" [(ngModel)]="name" placeholder="your name" >
+      </mat-form-field>
+
+    <mat-label>Email:</mat-label>
+    <mat-form-field class="example-full-width">
+      <input type="email" matInput name="email" [(ngModel)]="email" required placeholder="enter email">
+      <mat-error *ngIf="registerForm.controls['email']?.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls['email']?.hasError('email') && !registerForm.controls['email']?.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-label>Password:</mat-label>
+    <mat-form-field class="example-full-width">
+    <input type="password" matInput required name="password" [(ngModel)]="password" placeholder="password" >
+      </mat-form-field>
+
+      <mat-label>role:</mat-label>
+      <mat-radio-group aria-label="Select an option" name="role" [(ngModel)]="role" required>
+        <mat-radio-button value="guest">Guest</mat-radio-button>
+        <mat-radio-button value="admin">admin</mat-radio-button>
+      </mat-radio-group>
+
+      <div class="example-button-row">
+        <button mat-flat-button type="submit">Register</button>
+      </div>
+      
+ 
+  </form>
+  
