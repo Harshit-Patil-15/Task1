@@ -29,7 +29,13 @@ import { Observable } from 'rxjs';
       if (token) {
         headers = headers.set('Authorization', `${token}`);
       }
-      return this.http.post<any>(`${this.bookUrl}/addBook`,{ headers }, book);
+      if(book.price>200) 
+        {
+          alert("cannot add book ");
+
+          
+        }
+      return this.http.post<any>(`${this.bookUrl}/addBook`, book,{ headers });
     }
   
     editBook(id: string, book: any): Observable<any> {

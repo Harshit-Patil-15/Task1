@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { BookService } from '../book.service';
+import { Component ,Inject} from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-addbook',
@@ -7,38 +7,25 @@ import { BookService } from '../book.service';
   styleUrl: './addbook.component.css'
 })
 export class AddbookComponent {
-  name: string='';
-  author: string='';
-  DOL: any=null;
-  price: number=0;
+  book: any = {
+    name: '',
+    author: '',
+    DOL: '',
+    price: 0
+  };
 
-  constructor(private bookService: BookService) { }
-  addBook(){
-    this.bookService.addBook({
-      name: this.name,
-      author: this.author,
-      DOL: this.DOL,
-      price: this.price
-    }).subscribe(
-      (response) => {
-        console.log('Book added successfully:', response);
-        this.resetForm();
-      },
-      (error) => {
-        console.error('Error adding book:', error);
-      }
-    );
 
-  }
-  resetForm() {
-    this.name = '',
-      this.author = '',
-      this.DOL = null,
-      this.price = 0
+  constructor(
+    public dialogRef: MatDialogRef<AddbookComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
-
-
-
-
+  addBook(): void {
+    this.dialogRef.close(this.book);
+  }
 }

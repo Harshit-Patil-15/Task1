@@ -13,6 +13,7 @@ export class AuthService {
       ,private router:Router
     ){ }
     
+    private userRole:any=''
     
     
     login(email: string,password:string): Observable<any>{
@@ -21,7 +22,9 @@ export class AuthService {
             map((response:any)=>{
                 if(response.token){
                     localStorage.setItem('token', response.token);
-                    console.log(response);
+                    this.userRole=response.role;
+                    console.log("after login1" +response.role);
+                    console.log("after login2" +response);
                     const headers = new HttpHeaders().set('Authorization', `${response.token}`);
                     return { ...response, headers };
                 }
@@ -36,8 +39,13 @@ export class AuthService {
       }
     
       logout() {
-        // localStorage.removeItem('user');
-        // this.router.navigate(['/login']);
+        localStorage.removeItem('user');
+        this.router.navigate(['/login']);
+      }
+      getUserRole(): string | null {
+        console.log("get user role "+ this.userRole);
+        console.log( this.userRole);
+        return this.userRole;
       }
 
 }

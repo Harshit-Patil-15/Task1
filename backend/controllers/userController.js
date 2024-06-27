@@ -29,6 +29,7 @@ try{
    if(!user){
     return res.status(400).json({message:"Invalid email or Password"})
    }
+   role=user.role;
    const isMatch=await bcrypt.compare(password,user.password);
    
    if(!isMatch){
@@ -38,7 +39,7 @@ try{
     id:user._id,role:user.role}, 
     'jwtSeceret',
     {expiresIn:'1h'});
-   res.json({message:"logged in successfully",token});
+   res.json({message:"logged in successfully",token,role});
 }catch(err){
  console.log("Error "+err.message);
  res.status.json({message:err.message});

@@ -18,6 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule, matDatepickerAnimations} from '@angular/material/datepicker';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { DateAdapter, NativeDateAdapter, provideNativeDateAdapter } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +50,7 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
     MatDatepickerModule,
     BrowserAnimationsModule,
     MatDialogModule,
-  
+    MatNativeDateModule
   
  
   ],

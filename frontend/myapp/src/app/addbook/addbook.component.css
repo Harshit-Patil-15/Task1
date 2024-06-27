@@ -1,7 +1,7 @@
 
 mat-card {
-    height: 50vh;
-    width: 30vw;
+    height: auto;
+    width: auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;

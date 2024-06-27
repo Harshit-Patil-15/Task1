@@ -1,8 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { AddbookComponent } from "../addbook/addbook.component";
 import { BookService } from "../book.service";
 import { EditbookComponent } from "../editbook/editbook.component";
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from "../auth.service";
 
 @Component({
     selector:'app-landing',
@@ -11,17 +12,27 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 
-export class LandingComponent {
-books: any[] = [];
+export class LandingComponent implements OnInit{
 
-    search: string = 'Harry';
-    limit: number = 5;
+    books: any[] = [];
+    search: string = '';
+    limit: number = 50;
     totalBooks: number = 0;
     page: number = 1;
+    userRole: any='';
+
     constructor(
         private bookService: BookService,
+        private authService: AuthService,
         public dialog: MatDialog 
     ){}
+
+    ngOnInit(): void {
+      console.log("get user role  landing"+ this.userRole);
+      this.userRole = this.authService.getUserRole();
+    }
+
+
     onGetBooks() {
         console.log('get book landing comp');
         this.bookService.getBooks(this.search, this.page, this.limit).subscribe(
@@ -47,9 +58,9 @@ books: any[] = [];
             if (updatedBook) {
               console.log('Updated Book:', updatedBook);
             }
-            this.bookService.editBook(book._id,book).subscribe(
+            this.bookService.editBook(book._id,updatedBook).subscribe(
                 () => {
-                  console.log('editing  book:', book);
+                  console.log('editing  book:', updatedBook);
                 },
                 (error) => {
                   console.error('Error editing book', error);
@@ -58,6 +69,29 @@ books: any[] = [];
           });
 
     }
+
+    onAddBooks() {
+      console.log("add book clicked ")
+      const dialogRef = this.dialog.open(AddbookComponent, {
+        width: '400px',
+      });
+  
+      dialogRef.afterClosed().subscribe((newBook: any) => {
+        if (newBook) {
+          console.log('Updated Book:', newBook);
+          this.books=newBook;
+        }
+        this.bookService.addBook(newBook).subscribe(
+          (response) => {
+            console.log('Book added successfully:', response);
+
+          },
+          (error) => {
+            console.error('Error adding book:', error);
+            }
+          );
+      });
+      }
    
     
    
@@ -76,4 +110,9 @@ books: any[] = [];
         }
         
 
+      Logout() {
+
+        }
+
 }
+

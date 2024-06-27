@@ -1,9 +1,15 @@
 const Book=require('../models/Book');
 const mongoose = require('mongoose')
- async function addBooks(req,res){
+ 
+
+
+async function addBooks(req,res){
 try{
  let {name,author,DOL,price,isDeleted}=req.body;
  let newBook=Book({name,author,DOL,price,isDeleted});
+ if(newBook.price>200){
+ return  res.status(400).json({message:"cant add "});
+ }
  const savedBooked=await newBook.save();
  res.status(201).json({message:"book added Sucessfully",book :savedBooked});
 }catch(err){
