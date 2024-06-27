@@ -14,6 +14,7 @@ import { AuthService } from "../auth.service";
 
 export class LandingComponent implements OnInit{
 
+
     books: any[] = [];
     search: string = '';
     limit: number = 50;
@@ -37,15 +38,24 @@ export class LandingComponent implements OnInit{
         console.log('get book landing comp');
         this.bookService.getBooks(this.search, this.page, this.limit).subscribe(
             (response) => {
+               
                 this.books = response.books; 
                 this.totalBooks = response.total; 
                 console.log('Books:', response);
+                console.log("this is from ongetbook"+this.books[0].DOL);
               },
               (error) => {
                 console.error('Error fetching books:', error);
               }  
         );
     }
+
+
+      
+     onSearchBooks() {
+        console.log(this.search);
+        this.onGetBooks()
+       }
 
 
     editBook(book:any) {
@@ -108,10 +118,11 @@ export class LandingComponent implements OnInit{
             }
           );
         }
-        
+      
+
 
       Logout() {
-
+       this.authService.logout();
         }
 
 }

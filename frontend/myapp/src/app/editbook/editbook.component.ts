@@ -13,6 +13,9 @@ constructor(
  @Inject(MAT_DIALOG_DATA) public data:any
 ) {
  this.book = { ...data.book };
+ if(this.book.DOL){
+  this.book.DOL=this.book.DOL.split('T')[0];
+ }
 }
 sendData() {
   this.dialogRef.close(this.book);

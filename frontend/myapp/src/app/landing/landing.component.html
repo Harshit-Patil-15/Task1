@@ -2,10 +2,9 @@
 <div><nav id="topnav">
     <a id="logo" class="nav-link" href="#">Book store</a>
     <a class="nav-link" *ngIf="userRole === 'admin'" (click)="onAddBooks()">AddBooks</a>
-
     <a class="nav-link" (click)="onGetBooks()">Get Books</a>
-
     <a class="rolelink nav-link " href="#"  > {{ userRole }}</a>
+    <input type="text" [(ngModel)]="search" placeholder="Search books" class="search-bar" (keyup)="onSearchBooks()">
     <a id="about" class="nav-link" (click)="Logout()">LogOut</a>
 </nav>
 </div>
@@ -24,7 +23,8 @@
           <mat-card-content>
             <p><strong>Author:</strong> {{ book.author }}</p>
             <p><strong>Price:</strong> {{ book.price | currency }}</p>
-            <p><strong>Date of Launch:</strong> {{ book.dateOfLaunch | date }}</p>
+            <p><strong>Date of Launch:</strong> {{ book.DOL | date }}</p>
+            <p *ngIf="book.isDeleted">Deleted</p>
           </mat-card-content>
           <mat-card-actions>
             <button mat-button *ngIf="userRole === 'admin'"  (click)="editBook(book)">Edit</button>
