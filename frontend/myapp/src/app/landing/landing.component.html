@@ -10,11 +10,14 @@
 </div>
 
 
-<mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
+<mat-paginator [length]="totalBooks"
+              [pageSize]="5"
+              [pageIndex]="page-1"
+              (page)="onPageChange($event)"
+        
               aria-label="Select page">
 </mat-paginator>
+<!-- [pageSizeOptions]="[5, 10, 25, 100]" -->
 
 <div class="listComponent"  *ngIf="books && books.length"> 
   <ng-container  *ngFor="let book of books">

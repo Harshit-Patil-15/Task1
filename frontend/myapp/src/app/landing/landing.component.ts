@@ -4,6 +4,7 @@ import { BookService } from "../book.service";
 import { EditbookComponent } from "../editbook/editbook.component";
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from "../auth.service";
+import { PageEvent } from "@angular/material/paginator";
 
 @Component({
     selector:'app-landing',
@@ -15,9 +16,10 @@ import { AuthService } from "../auth.service";
 export class LandingComponent implements OnInit{
 
 
+
     books: any[] = [];
     search: string = '';
-    limit: number = 50;
+    limit: number = 5;
     totalBooks: number = 0;
     page: number = 1;
     userRole: any='';
@@ -48,6 +50,10 @@ export class LandingComponent implements OnInit{
                 console.error('Error fetching books:', error);
               }  
         );
+    }
+    onPageChange(event: PageEvent) {
+      this.page = event.pageIndex + 1;
+      this.onGetBooks();
     }
 
 
