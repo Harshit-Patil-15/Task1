@@ -37,14 +37,14 @@ export class LandingComponent implements OnInit{
 
 
     onGetBooks() {
-        console.log('get book landing comp');
+        // console.log('get book landing comp');
         this.bookService.getBooks(this.search, this.page, this.limit).subscribe(
             (response) => {
                
                 this.books = response.books; 
                 this.totalBooks = response.total; 
-                console.log('Books:', response);
-                console.log("this is from ongetbook"+this.books[0].DOL);
+                // console.log('Books:', response);
+                // console.log("this is from ongetbook"+this.books[0].DOL);
               },
               (error) => {
                 console.error('Error fetching books:', error);
@@ -59,7 +59,7 @@ export class LandingComponent implements OnInit{
 
       
      onSearchBooks() {
-        console.log(this.search);
+        // console.log(this.search);
         this.onGetBooks()
        }
 
